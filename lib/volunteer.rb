@@ -11,9 +11,18 @@ class Volunteer
     self.name == volunteer_to_compare.name
   end
 
+  def self.all
+    results = DB.exec('SELECT * FROM volunteers')
+    volunteers = []
+    results.each do |result|
+      volunteers.push(Volunteer.new({:name => result.fetch("name"), :project_id => result.fetch("project_id"), :id => result.fetch("id").to_i}))
+    end
+    volunteers
+  end
 
-
-
+  def save
+    result = DB.exec("INSERT INTO volunteers (name, project_id) VALUES ('#{@name}', '#{@project_id}') RETURNING id ;")
+  end
 
 
 end
