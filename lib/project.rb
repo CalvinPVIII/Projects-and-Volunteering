@@ -24,4 +24,9 @@ class Project
     projects
   end
 
+  def self.find(id)
+    result = DB.exec("SELECT * FROM projects WHERE id = #{id}").first
+    Project.new({:name => result.fetch("name"), :id => result.fetch("id")})
+  end
+
 end
