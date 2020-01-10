@@ -60,3 +60,16 @@ patch '/projects/:id/volunteers/:volunteer_id' do
   volunteer.update({:name => params[:name], :id => nil})
   redirect to ('/projects/' + params[:id] + '/volunteers/' + params[:volunteer_id] )
 end
+
+post '/projects/:id/volunteers/'do
+  volunteer = Volunteer.new({:name => params[:name], :project_id => params[:id], :id => nil})
+  volunteer.save
+  redirect to ("/projects/"+params[:id])
+end
+
+
+delete '/projects/:id/volunteers/:volunteer_id' do
+  volunteer = Volunteer.find(params[:volunteer_id])
+  volunteer.delete
+  redirect to ("/projects/"+params[:id])
+end
