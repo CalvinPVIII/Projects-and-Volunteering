@@ -5,7 +5,7 @@
 <h3>Current Volunteers for <%= @project.name %>:</h3>
 <ul>
   <% @volunteers.each do |volunteer| %>
-  <li><a href="/projects/<%= project.id %>"> <%= volunteer.name %> </a></li>
+  <li><a href="/projects/<%= @project.id %>/volunteers/<%= volunteer.id %>"> <%= volunteer.name %> </a></li>
   <% end %>
   <% else %>
   <h5>Currently there are no volunteers for this project</h5>

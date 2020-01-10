@@ -40,5 +40,23 @@ end
 delete '/projects/:id' do
   project = Project.find(params[:id])
   project.delete
-  redirect to ('/projects/' + params[:id])
+  redirect to ('/')
+end
+
+get '/projects/:id/volunteers/:volunteer_id' do
+  @project = Project.find(params[:id])
+  @volunteer = Volunteer.find(params[:volunteer_id])
+  erb(:volunteer)
+end
+
+get '/projects/:id/volunteers/:volunteer_id/edit' do
+  @project = Project.find(params[:id])
+  @volunteer = Volunteer.find(params[:volunteer_id])
+  erb(:edit_volunteer)
+end
+
+patch '/projects/:id/volunteers/:volunteer_id' do
+  volunteer = Volunteer.find(params[:volunteer_id])
+  volunteer.update({:name => params[:name], :id => nil})
+  redirect to ('/projects/' + params[:id] + '/volunteers/' + params[:volunteer_id] )
 end
