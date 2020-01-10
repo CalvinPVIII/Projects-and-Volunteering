@@ -29,4 +29,11 @@ class Project
     Project.new({:name => result.fetch("name"), :id => result.fetch("id")})
   end
 
+  def update(attributes)
+    @name = attributes.fetch(:name)
+    DB.exec("UPDATE projects SET name = '#{@name}' WHERE id = #{@id}")
+  end
+
+
+
 end
