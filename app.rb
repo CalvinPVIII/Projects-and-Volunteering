@@ -16,5 +16,6 @@ end
 
 post '/projects' do
   project = Project.new({:name => params[:title], :id => nil})
-  redirct to ('/')
+  project.save
+  redirect to ('/')
 end
