@@ -46,4 +46,4 @@ _For questions, comments, or concerns, you can reach me at calvinp003@gmail.com_
 
 *Licensed under MIT*
 
-Copyright (c) 2019 **_Calvin Will_**
+Copyright (c) 2020 **_Calvin Will_**
